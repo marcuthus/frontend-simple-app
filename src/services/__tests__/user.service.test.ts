@@ -44,6 +44,13 @@ describe("UserService", () => {
         expect(result).toEqual(mockUser)
     })
 
+    it("should fetch user by username", async () => {
+        vi.mocked(api.get).mockResolvedValue(mockUser)
+        const result = await userService.findByUsername("johndoe")
+        expect(api.get).toHaveBeenCalledWith("/users/username/johndoe")
+        expect(result).toEqual(mockUser)
+    })
+
     it("should create a user", async () => {
         const createData = { name: "New User" }
         vi.mocked(api.post).mockResolvedValue({ ...mockUser, ...createData })
