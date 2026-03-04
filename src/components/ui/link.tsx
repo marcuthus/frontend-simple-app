@@ -1,9 +1,9 @@
 "use client"
 
-import { cva, type VariantProps } from "class-variance-authority"
-import { Link as ReactLink } from "react-router-dom"
+import { type VariantProps, cva } from "class-variance-authority"
 import { ExternalLink, Mail } from "lucide-react"
 import * as React from "react"
+import { Link as ReactLink } from "react-router-dom"
 
 import { cn } from "@/lib/utils"
 
@@ -36,18 +36,23 @@ const linkVariants = cva(
             size: "default",
             underline: "hover",
         },
-    },
+    }
 )
 
-export interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof linkVariants> {
+export interface LinkProps
+    extends React.AnchorHTMLAttributes<HTMLAnchorElement>, VariantProps<typeof linkVariants> {
     href: string
     showExternalIcon?: boolean
     asChild?: boolean
 }
 
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
-    ({ className, variant, size, underline, href, showExternalIcon = true, children, ...props }, ref) => {
-        const isExternal = href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")
+    (
+        { className, variant, size, underline, href, showExternalIcon = true, children, ...props },
+        ref
+    ) => {
+        const isExternal =
+            href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:")
 
         const content = (
             <>
@@ -87,7 +92,7 @@ const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(
                 {content}
             </ReactLink>
         )
-    },
+    }
 )
 
 Link.displayName = "Link"
