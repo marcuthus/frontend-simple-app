@@ -17,6 +17,7 @@
         "lint:fix": "eslint --fix",
         "format": "prettier --write \"src/**/*.{ts,tsx}\" --ignore-unknown",
         "test": "vitest run",
+        "test:coverage": "vitest run --coverage",
         "ci": "npm run lint:fix && npm run format && npm run test"
     },
     "dependencies": {
