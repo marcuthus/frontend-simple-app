@@ -4,18 +4,18 @@ export enum UserRole {
 }
 
 export interface User {
-    id: string;
-    createdAt: string;
-    updatedAt: string | null;
-    name: string;
-    role: UserRole;
-    email: string;
-    username: string;
-    apiKey: string;
+    id: string
+    createdAt: string
+    updatedAt: string | null
+    name: string
+    role: UserRole
+    email: string
+    username: string
+    apiKey: string
 }
 
 export interface AuthResponse {
-    user: User;
-    accessToken: string;
-    refreshToken: string;
+    user: User
+    accessToken: string
+    refreshToken: string
 }

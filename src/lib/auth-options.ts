@@ -1,6 +1,7 @@
 import { AuthOptions, User as NextAuthUser } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 
+import { UserRole } from "@/types/user"
 import { AuthResponse } from "@/types/user"
 
 export const authOptions: AuthOptions = {
@@ -41,7 +42,7 @@ export const authOptions: AuthOptions = {
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
-                const u = user as any
+                const u = user as NextAuthUser
                 token.id = u.id
                 token.username = u.username
                 token.role = u.role
@@ -55,7 +56,7 @@ export const authOptions: AuthOptions = {
             if (token) {
                 session.user.id = token.id as string
                 session.user.username = token.username as string
-                session.user.role = token.role as any
+                session.user.role = token.role as UserRole
                 session.user.apiKey = token.apiKey as string
                 session.user.accessToken = token.accessToken as string
                 session.user.refreshToken = token.refreshToken as string

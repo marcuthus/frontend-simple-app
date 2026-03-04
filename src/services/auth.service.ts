@@ -1,6 +1,6 @@
 import { api } from "./api"
-import { User } from "@/types/user"
 import { SignUpValues } from "@/schemas/users/auth.schema"
+import { User } from "@/types/user"
 
 export const authService = {
     signUp: (data: SignUpValues) => api.post<User>("/auth/sign-up", data),

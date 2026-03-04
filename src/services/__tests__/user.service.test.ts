@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest"
 
-import { userService } from "../user.service"
 import { api } from "../api"
+import { userService } from "../user.service"
 import { UserRole } from "@/types/user"
 
 // Mock the API helper
