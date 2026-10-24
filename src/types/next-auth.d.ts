@@ -8,10 +8,9 @@ declare module "next-auth" {
             email: string
             username: string
             role: UserRole
-            apiKey: string
             accessToken: string
-            refreshToken: string
         } & DefaultSession["user"]
+        error?: "RefreshAccessTokenError"
     }
 
     interface User extends AppUser {
@@ -25,8 +24,9 @@ declare module "next-auth/jwt" {
         id: string
         username: string
         role: UserRole
-        apiKey: string
         accessToken: string
         refreshToken: string
+        accessTokenExpires?: number | null
+        error?: "RefreshAccessTokenError"
     }
 }

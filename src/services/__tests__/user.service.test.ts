@@ -10,6 +10,7 @@ vi.mock("../api", () => ({
         get: vi.fn(),
         post: vi.fn(),
         put: vi.fn(),
+        patch: vi.fn(),
         delete: vi.fn(),
     },
 }))
@@ -61,9 +62,9 @@ describe("UserService", () => {
 
     it("should update a user", async () => {
         const updateData = { name: "Updated Name" }
-        vi.mocked(api.put).mockResolvedValue({ ...mockUser, ...updateData })
+        vi.mocked(api.patch).mockResolvedValue({ ...mockUser, ...updateData })
         const result = await userService.update("user-id", updateData)
-        expect(api.put).toHaveBeenCalledWith("/users/user-id", updateData)
+        expect(api.patch).toHaveBeenCalledWith("/users/user-id", updateData)
         expect(result.name).toBe("Updated Name")
     })
 
